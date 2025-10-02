@@ -1,66 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { stories } from './data';
 
-const stories = [
-    {
-        name: "Sarah Johnson",
-        location: "New York, USA",
-        years: "5 Years",
-        story: "Joining this community changed my life. I found not just colleagues, but lifelong friends who supported me through every challenge.",
-        tag: "Career Growth",
-        color: "#FF6B6B",
-        image: "SJ"
-    },
-    {
-        name: "Michael Chen",
-        location: "Singapore",
-        years: "3 Years",
-        story: "The mentorship program here is exceptional. I've grown from an intern to a team lead, and I'm grateful for every opportunity.",
-        tag: "Leadership",
-        color: "#4ECDC4",
-        image: "MC"
-    },
-    {
-        name: "Emma Williams",
-        location: "London, UK",
-        years: "7 Years",
-        story: "The work-life balance and company culture make this the best place I've ever worked. I can truly be myself here.",
-        tag: "Work Culture",
-        color: "#95E1D3",
-        image: "EW"
-    },
-    {
-        name: "David Martinez",
-        location: "Barcelona, Spain",
-        years: "4 Years",
-        story: "From day one, I felt valued and heard. The innovative projects and collaborative environment keep me inspired every day.",
-        tag: "Innovation",
-        color: "#F38181",
-        image: "DM"
-    },
-    {
-        name: "Priya Patel",
-        location: "Mumbai, India",
-        years: "6 Years",
-        story: "The commitment to diversity and inclusion is real here. I've been able to grow professionally while staying true to my values.",
-        tag: "Diversity",
-        color: "#AA96DA",
-        image: "PP"
-    },
-    {
-        name: "Alex Thompson",
-        location: "Toronto, Canada",
-        years: "2 Years",
-        story: "The innovation and creativity encouraged here is unmatched. Every day brings new challenges and opportunities to learn.",
-        tag: "Creativity",
-        color: "#FCBAD3",
-        image: "AT"
-    }
-];
+
 
 export default function StorySlider() {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const slidesToShow = 3;
+    const [slidesToShow, setSlidesToShow] = useState(3);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 768) {
+                setSlidesToShow(1);
+            } else if (window.innerWidth < 1024) {
+                setSlidesToShow(2);
+            } else {
+                setSlidesToShow(3);
+            }
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const maxIndex = Math.max(0, stories.length - slidesToShow);
+
+    useEffect(() => {
+        if (currentIndex > maxIndex) {
+            setCurrentIndex(maxIndex);
+        }
+    }, [maxIndex, currentIndex]);
 
     const nextSlide = () => {
         setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
@@ -81,7 +50,6 @@ export default function StorySlider() {
             maxWidth: '1400px',
             margin: '0 auto',
             padding: '40px 20px',
-            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
         }}>
             <h2 style={{
                 textAlign: 'center',
@@ -93,8 +61,8 @@ export default function StorySlider() {
                 Success Stories
             </h2>
 
-            <div style={{ position: 'relative', padding: '0 60px' }}>
-                {/* Slider Container */}
+            <div style={{ position: 'relative', padding: '0 0px' }}>
+         
                 <div style={{
                     overflow: 'hidden',
                     borderRadius: '16px'
@@ -119,7 +87,6 @@ export default function StorySlider() {
                                     backgroundColor: 'white',
                                     height: '100%'
                                 }}>
-                                    {/* Header Section */}
                                     <div style={{
                                         background: `linear-gradient(135deg, ${story.color} 0%, ${story.color}DD 100%)`,
                                         padding: '24px',
@@ -177,7 +144,6 @@ export default function StorySlider() {
                                         </span>
                                     </div>
 
-                                    {/* Content Section */}
                                     <div style={{ padding: '24px' }}>
                                         <p style={{
                                             color: '#37474F',
@@ -207,7 +173,6 @@ export default function StorySlider() {
                     </div>
                 </div>
 
-                {/* Navigation Arrows */}
                 <button
                     onClick={prevSlide}
                     disabled={currentIndex === 0}
@@ -286,7 +251,6 @@ export default function StorySlider() {
                     ›
                 </button>
 
-                {/* Dots Navigation */}
                 <div style={{
                     display: 'flex',
                     justifyContent: 'center',

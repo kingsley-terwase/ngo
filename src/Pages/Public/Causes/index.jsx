@@ -211,7 +211,7 @@ const CausesPage = () => {
                                         <CheckmarkCircle24Regular style={{ color: cause.color }} />
                                         <span>{cause.supporters} supporters</span>
                                     </div>
-                                    <button style={{
+                                    <button onClick={handleDonate} style={{
                                         padding: '10px 24px',
                                         background: hoverCard === index ? `linear-gradient(135deg, ${cause.color}, ${cause.color}dd)` : '#f5f7fa',
                                         color: hoverCard === index ? 'white' : cause.color,

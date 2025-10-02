@@ -73,6 +73,7 @@ const DonateSection = () => {
                 <Box textAlign="center" data-aos='flip-up' mb={6} sx={{
                     backgroundColor: COLORS.primary,
                     py: 4,
+                    px:3,
                     borderRadius:3
                 }}>
                     <Typography

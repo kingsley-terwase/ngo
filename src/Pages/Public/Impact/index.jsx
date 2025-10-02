@@ -110,7 +110,7 @@ const ImpactPage = () => {
     ];
 
     return (
-        <Box sx={{ bgcolor: '#FAFAFA', minHeight: '100vh' }}>
+        <Box sx={{ bgcolor: '#FAFAFA',overflowX: "hidden", width: '100%', minHeight: '100vh' }}>
 
             <div style={{
                 position: "relative",

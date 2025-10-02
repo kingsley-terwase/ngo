@@ -41,20 +41,23 @@ export function AboutUsPage() {
     }
 
     return (
-        <Box sx={{ background: 'linear-gradient(180deg, #ffffff 0%, #f8fafb 100%)' }}>
+        <Box sx={{ background: 'linear-gradient(180deg, #ffffff 0%, #f8fafb 100%)', width: '100%', overflowX: "hidden" }}>
 
-            <div style={{
-                position: "relative",
-                backgroundImage: "url('/Images/child_1.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                color: "white",
-                padding: "100px 24px 80px",
-                textAlign: "center",
-                overflow: "hidden",
-                zIndex: 0,
-            }}>
+            <Box
+                sx={{
+                    position: "relative",
+                    backgroundImage: "url('/Images/child_1.png')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    color: "white",
+                    py: { xs: 8, md: 12 }, // responsive vertical padding
+                    px: 2,
+                    textAlign: "center",
+                    overflowX: "hidden", // ✅ prevent horizontal scroll
+                    zIndex: 0,
+                }}
+            >
                 <Box
                     sx={{
                         position: "absolute",
@@ -65,28 +68,49 @@ export function AboutUsPage() {
                     }}
                 />
 
-                <div style={{ position: 'relative', zIndex: 1, maxWidth: '900px', margin: '0 auto' }}>
-                    <div style={{
-                        width: '80px',
-                        height: '80px',
-                        background: 'rgba(255,255,255,0.2)',
-                        borderRadius: '50%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: '0 auto 24px',
-                        backdropFilter: 'blur(10px)'
-                    }}>
-                        <PeopleRegular style={{ fontSize: '40px' }} />
-                    </div>
-                    <h1 style={{ fontSize: '3.5rem', fontWeight: '700', marginBottom: '24px', lineHeight: '1.2' }}>
+                <Box sx={{ position: "relative", zIndex: 1, maxWidth: "900px", mx: "auto" }}>
+                    <Box
+                        sx={{
+                            width: 80,
+                            height: 80,
+                            background: "rgba(255,255,255,0.2)",
+                            borderRadius: "50%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            mx: "auto",
+                            mb: 3,
+                            backdropFilter: "blur(10px)",
+                        }}
+                    >
+                        <PeopleRegular style={{ fontSize: 40 }} />
+                    </Box>
+                    <Typography
+                        component="h1"
+                        sx={{
+                            fontSize: { xs: "2rem", md: "3.5rem" }, // ✅ responsive font
+                            fontWeight: 700,
+                            mb: 3,
+                            lineHeight: 1.2,
+                        }}
+                    >
                         About Us
-                    </h1>
-                    <p style={{ fontSize: '1.3rem', opacity: 0.95, lineHeight: '1.6', maxWidth: '700px', margin: '0 auto' }}>
-                        Join our community of dedicated volunteers and help transform the lives of children in need. Every hour you give creates lasting impact.
-                    </p>
-                </div>
-            </div>
+                    </Typography>
+                    <Typography
+                        sx={{
+                            fontSize: { xs: "1rem", md: "1.3rem" },
+                            opacity: 0.95,
+                            lineHeight: 1.6,
+                            maxWidth: "700px",
+                            mx: "auto",
+                        }}
+                    >
+                        Join our community of dedicated volunteers and help transform the lives of
+                        children in need. Every hour you give creates lasting impact.
+                    </Typography>
+                </Box>
+            </Box>
+
 
             <Container maxWidth="lg" sx={{ mt: -6, mb: 12, position: 'relative', zIndex: 2 }}>
                 <Grid container spacing={4}>

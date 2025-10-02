@@ -20,6 +20,7 @@ import { Hero } from '../HeroSection';
 import { COLORS } from '../../Config/color';
 import { FONT_FAMILY } from '../../Config/font';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { MenuOutlined } from '@mui/icons-material';
 
 const Header = () => {
     const location = useLocation();
@@ -134,25 +135,53 @@ const Header = () => {
                                     onClick={handleMenuOpen}
                                     sx={{ color: scrolled ? '#333' : 'white' }}
                                 >
-                                    <MoreHorizontalFilled />
+                                    <MenuOutlined />
                                 </IconButton>
                             )}
                         </Box>
-
                         <Menu
                             anchorEl={anchorEl}
                             open={Boolean(anchorEl)}
                             onClose={handleMenuClose}
+                            anchorOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                            }}
+                            transformOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                            }}
+                            PaperProps={{
+                                sx: {
+                                    mt: 1,
+                                    width: "200px",
+                                    maxHeight: "90vh",
+                                    overflow: "hidden",
+                                    borderRadius: 2,
+                                },
+                            }}
                         >
-                            <MenuItem onClick={handleMenuClose}>Home</MenuItem>
-                            <MenuItem onClick={handleMenuClose}>Properties</MenuItem>
-                            <MenuItem onClick={handleMenuClose}>Projects</MenuItem>
-                            <MenuItem onClick={handleMenuClose}>Pricing</MenuItem>
-                            <MenuItem onClick={handleMenuClose}>Pages</MenuItem>
-                            <MenuItem onClick={handleMenuClose}>Contact</MenuItem>
-                            <MenuItem onClick={handleMenuClose}>Customer</MenuItem>
-                            <MenuItem onClick={handleMenuClose}>Vendor</MenuItem>
+                            <MenuItem onClick={() => { handleAbout(); handleMenuClose(); }}>
+                                About us
+                            </MenuItem>
+                            <MenuItem onClick={() => { handleVolunteer(); handleMenuClose(); }}>
+                                Volunteer
+                            </MenuItem>
+                            <MenuItem onClick={() => { handleCauses(); handleMenuClose(); }}>
+                                Causes
+                            </MenuItem>
+                            <MenuItem onClick={() => { handleImpact(); handleMenuClose(); }}>
+                                Impact
+                            </MenuItem>
+                            <MenuItem onClick={() => { handleBlog(); handleMenuClose(); }}>
+                                Blogs
+                            </MenuItem>
+                            <MenuItem onClick={() => { handleContact(); handleMenuClose(); }}>
+                                Contact
+                            </MenuItem>
                         </Menu>
+
+
                     </Toolbar>
                 </Container>
             </StyledAppBar>

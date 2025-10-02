@@ -77,7 +77,7 @@ const VolunteerPage = () => {
     };
 
     return (
-        <div style={{ fontFamily: FONT_FAMILY.primary, backgroundColor: '#f5f7fa', minHeight: '100vh' }}>
+        <div style={{ fontFamily: FONT_FAMILY.primary, backgroundColor: '#f5f7fa', overflowX: "hidden", width: '100%', minHeight: '100vh' }}>
             <div style={{
                 position: "relative",
                 backgroundImage: "url('/Images/child_1.png')",
@@ -133,12 +133,12 @@ const VolunteerPage = () => {
                     </p>
                 </div>
 
-                <div 
-                         data-aos='fade-left' style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                    gap: '32px'
-                }}>
+                <div
+                    data-aos='fade-left' style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                        gap: '32px'
+                    }}>
                     {opportunities.map((opp, index) => (
                         <div
                             key={index}
