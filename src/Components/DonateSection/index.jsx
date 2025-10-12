@@ -113,9 +113,8 @@ const DonateSection = () => {
                                 fontWeight: 600,
                                 color: '#000',
                                 fontFamily: FONT_FAMILY.primary,                                
-                                backgroundColor: COLORS.style_1,
+                                backgroundColor:'#FBCC55',
                                 "&:hover": {
-                                    backgroundColor:'#FBCC55',
                                     color: "#000",
                                 },
                             }}

@@ -25,7 +25,11 @@ import {
     LinkedIn,
     Public,
     EmojiEvents,
-    Verified
+    Verified,
+    Gavel,
+    Balance,
+    Diversity3,
+    Visibility
 } from '@mui/icons-material';
 import { FONT_FAMILY } from '../../../Config/font';
 import { COLORS } from '../../../Config/color';
@@ -51,10 +55,10 @@ export function AboutUsPage() {
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
                     color: "white",
-                    py: { xs: 8, md: 12 }, // responsive vertical padding
+                    py: { xs: 8, md: 12 },
                     px: 2,
                     textAlign: "center",
-                    overflowX: "hidden", // ✅ prevent horizontal scroll
+                    overflowX: "hidden",
                     zIndex: 0,
                 }}
             >
@@ -88,7 +92,7 @@ export function AboutUsPage() {
                     <Typography
                         component="h1"
                         sx={{
-                            fontSize: { xs: "2rem", md: "3.5rem" }, // ✅ responsive font
+                            fontSize: { xs: "2rem", md: "3.5rem" },
                             fontWeight: 700,
                             mb: 3,
                             lineHeight: 1.2,
@@ -144,9 +148,8 @@ export function AboutUsPage() {
                                 </Typography>
                             </Box>
                             <Typography variant="body1" sx={{ fontSize: '1.1rem', fontFamily: FONT_FAMILY.primary, lineHeight: 1.9, color: '#444' }}>
-                                To create lasting positive change by providing underprivileged children with access to
-                                quality education, comprehensive healthcare, proper nutrition, and safe environments.
-                                We empower communities to build sustainable futures where every child can reach their full potential.
+                                To Transform And Improve The Lives Of
+                                Deprived Individuals
                             </Typography>
                         </Paper>
                     </Grid>
@@ -180,9 +183,10 @@ export function AboutUsPage() {
                                 </Typography>
                             </Box>
                             <Typography variant="body1" sx={{ fontFamily: FONT_FAMILY.primary, fontSize: '1.1rem', lineHeight: 1.9, color: '#444' }}>
-                                A world where every child, regardless of background or circumstances, has equal opportunities
-                                to learn, grow, and thrive. We envision communities where education is accessible, healthcare
-                                is a right, and children's dreams are nurtured and realized.
+                                To give hope to the less privileged &
+                                vulnerable persons in the society
+                                Restore Broken Homes and uplift humanity
+                                to God’s Purpose.
                             </Typography>
                         </Paper>
                     </Grid>
@@ -196,17 +200,44 @@ export function AboutUsPage() {
                             Our Core Values
                         </Typography>
                         <Typography variant="body1" sx={{ fontFamily: FONT_FAMILY.primary, color: '#666', fontSize: '1.1rem', maxWidth: '700px', mx: 'auto' }}>
-                            These principles guide every decision we make and every action we take
+                            Accountability , Transparency, Integrity
+                            Equality And Diversity.
                         </Typography>
                     </Box>
                     <Grid container spacing={3}>
                         {[
-                            { icon: <People />, title: 'Community Partnership', desc: 'Working hand-in-hand with local leaders to create sustainable solutions', color: '#2E7D32' },
-                            { icon: <Psychology />, title: 'Child-Centered Approach', desc: 'Every child\'s wellbeing and future is at the heart of our work', color: '#1976D2' },
-                            { icon: <Security />, title: 'Transparency & Accountability', desc: 'Open reporting and responsible stewardship of every contribution', color: '#F57C00' },
-                            { icon: <Groups />, title: 'Global Collaboration', desc: 'Uniting diverse partners to amplify our collective impact', color: '#7B1FA2' }
+                            {
+                                icon: <Verified />,
+                                title: 'Accountability',
+                                desc: 'We take full responsibility for our actions, ensuring every decision upholds trust and purpose.',
+                                color: '#2E7D32',
+                            },
+                            {
+                                icon: <Visibility />,
+                                title: 'Transparency',
+                                desc: 'We maintain openness in all our operations, fostering trust through clear and honest communication.',
+                                color: '#1976D2',
+                            },
+                            {
+                                icon: <Gavel />,
+                                title: 'Integrity',
+                                desc: 'We act with honesty and strong moral principles, even when no one is watching.',
+                                color: '#F57C00',
+                            },
+                            {
+                                icon: <Balance />,
+                                title: 'Equality',
+                                desc: 'We believe everyone deserves equal opportunity, fairness, and respect in all we do.',
+                                color: '#7B1FA2',
+                            },
+                            {
+                                icon: <Diversity3 />,
+                                title: 'Diversity',
+                                desc: 'We embrace differences, recognizing that diverse perspectives strengthen our community and impact.',
+                                color: '#009688',
+                            },
                         ].map((value, index) => (
-                            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
+                            <Grid size={{ xs: 12, sm: 6, md: 3 }} sx={{mb:8}} key={index}>
                                 <Card
                                     onMouseEnter={() => setHoveredCard(index)}
                                     onMouseLeave={() => setHoveredCard(null)}
@@ -263,10 +294,16 @@ export function AboutUsPage() {
                 </Box>
                 <Grid container spacing={2}>
                     {[
-                        { name: 'Dr. Sarah Johnson', role: 'Chief Executive Officer', credentials: 'PhD International Development', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop' },
-                        { name: 'Michael Chen', role: 'Chief Program Officer', credentials: 'MA Education Policy', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop' },
-                        { name: 'Dr. Aisha Patel', role: 'Chief Development Officer', credentials: 'MBA, MPH', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop' },
-                        { name: 'James Wilson', role: 'Chief Operations Officer', credentials: 'MS Nonprofit Management', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop' }
+                        { name: 'Ann Judith Chinonso-Ajah', role: 'Director', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop' },
+                        { name: 'Benedict Chinonso-Ajah', role: 'Administrative Manager', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop' },
+                        { name: 'Chizoma Izama', role: 'Project Manager', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop' },
+                        { name: 'Patience Samuel Adamu', role: 'Admin Assistant', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop', },
+                        { name: 'Augusta Humphrey Oboh', role: 'Accounts Officer', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop' },
+                        { name: 'Peace Onwuka Kalu', role: 'Accounts Assistant', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop' },
+                        { name: 'Mary Awoniyi', role: 'Project Coordinator(Health)', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop' },
+                        { name: 'Irene Isioma Okafor', role: 'Project Coordinator(Education)', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop' },
+                        { name: 'Rose Samuel', role: 'Project Coordinator(Livelihood)', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop' },
+                        { name: 'Chinenye Okafor', role: 'Project Coordinator(Training)', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop' }
                     ].map((member, index) => (
                         <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
                             <Card
@@ -306,7 +343,7 @@ export function AboutUsPage() {
                                     <Typography variant="body2" color="text.secondary" sx={{ fontFamily: FONT_FAMILY.primary, display: 'block', mb: 2 }}>
                                         {member.credentials}
                                     </Typography>
-                                    <Button
+                                    {/* <Button
                                         size="small"
                                         startIcon={<LinkedIn />}
                                         sx={{
@@ -316,7 +353,7 @@ export function AboutUsPage() {
                                         }}
                                     >
                                         Connect
-                                    </Button>
+                                    </Button> */}
                                 </CardContent>
                             </Card>
                         </Grid>

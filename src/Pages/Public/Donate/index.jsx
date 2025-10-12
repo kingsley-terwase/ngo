@@ -28,17 +28,30 @@ import {
 } from '@fluentui/react-icons';
 import { COLORS } from '../../../Config/color';
 import { FONT_FAMILY } from '../../../Config/font';
-
+import { PaystackButton } from 'react-paystack';
 
 export default function DonatePage() {
-    const [selectedAmount, setSelectedAmount] = useState(50);
+    const publicKey = "pk_test_da66043597a45f6effea6800ac085f21b2350240";
+    
+    const [selectedAmount, setSelectedAmount] = useState(20000);
     const [customAmount, setCustomAmount] = useState('');
     const [isHovered, setIsHovered] = useState(false);
     const [donationType, setDonationType] = useState('one-time');
+    
+    // Form data state
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+    });
+    
+    // Form validation state
+    const [formErrors, setFormErrors] = useState({});
 
-    const presetAmounts = [25, 50, 100, 250];
-    const goalAmount = 50000;
-    const currentAmount = 32450;
+    const presetAmounts = [10000, 20000, 50000, 100000];
+    const goalAmount = 20000000;
+    const currentAmount = 13000000;
     const progress = (currentAmount / goalAmount) * 100;
 
     const handleAmountSelect = (amount) => {
@@ -49,6 +62,113 @@ export default function DonatePage() {
     const handleCustomAmountChange = (e) => {
         setCustomAmount(e.target.value);
         setSelectedAmount(null);
+    };
+
+    const handleInputChange = (field) => (e) => {
+        setFormData({
+            ...formData,
+            [field]: e.target.value,
+        });
+        // Clear error when user starts typing
+        if (formErrors[field]) {
+            setFormErrors({
+                ...formErrors,
+                [field]: '',
+            });
+        }
+    };
+
+    const validateForm = () => {
+        const errors = {};
+        
+        if (!formData.firstName.trim()) {
+            errors.firstName = 'First name is required';
+        }
+        
+        if (!formData.lastName.trim()) {
+            errors.lastName = 'Last name is required';
+        }
+        
+        if (!formData.email.trim()) {
+            errors.email = 'Email is required';
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            errors.email = 'Email is invalid';
+        }
+
+        if (!formData.phone.trim()) {
+            errors.phone = 'Phone number is required';
+        } else if (!/^[0-9]{10,11}$/.test(formData.phone.replace(/\s/g, ''))) {
+            errors.phone = 'Phone number must be 10-11 digits';
+        }
+        
+        const donationAmount = customAmount || selectedAmount;
+        if (!donationAmount || donationAmount <= 0) {
+            errors.amount = 'Please select or enter a valid amount';
+        }
+        
+        setFormErrors(errors);
+        return Object.keys(errors).length === 0;
+    };
+
+    // Paystack configuration
+    const amount = (customAmount || selectedAmount || 0) * 100; // Convert to kobo
+    
+    const paystackConfig = {
+        reference: `donation_${new Date().getTime()}_${Math.floor(Math.random() * 1000000)}`,
+        email: formData.email,
+        amount: amount,
+        publicKey: publicKey,
+        phone: formData.phone,
+        metadata: {
+            custom_fields: [
+                {
+                    display_name: "Full Name",
+                    variable_name: "full_name",
+                    value: `${formData.firstName} ${formData.lastName}`
+                },
+                {
+                    display_name: "Phone Number",
+                    variable_name: "phone_number",
+                    value: formData.phone
+                },
+                {
+                    display_name: "Donation Type",
+                    variable_name: "donation_type",
+                    value: donationType
+                }
+            ]
+        }
+    };
+
+    // Paystack handlers
+    const handlePaystackSuccessAction = (reference) => {
+        console.log('Payment successful!', reference);
+        alert(`Donation successful! Thank you ${formData.firstName}! Reference: ${reference.reference}`);
+        resetForm();
+    };
+
+    const handlePaystackCloseAction = () => {
+        console.log('Payment closed');
+        alert('Payment window closed. Your donation was not completed.');
+    };
+
+    const resetForm = () => {
+        setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+        });
+        setSelectedAmount(20000);
+        setCustomAmount('');
+        setFormErrors({});
+    };
+
+    const handleDonateClick = () => {
+        if (!validateForm()) {
+            alert('Please fill in all required fields correctly');
+            return;
+        }
     };
 
     const impactItems = [
@@ -103,6 +223,7 @@ export default function DonatePage() {
                     </p>
                 </div>
             </div>
+
             <Container maxWidth="lg">
                 <Slide direction="down" in timeout={1000}>
                     <Paper
@@ -140,16 +261,16 @@ export default function DonatePage() {
                         />
                         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                             <Typography variant="body2" sx={{ fontFamily: FONT_FAMILY.primary, opacity: 0.9 }}>
-                                ${currentAmount.toLocaleString()} raised
+                                ₦{currentAmount.toLocaleString()} raised
                             </Typography>
                             <Typography variant="body2" sx={{ fontFamily: FONT_FAMILY.primary, opacity: 0.9 }}>
-                                ${goalAmount.toLocaleString()} goal
+                                ₦{goalAmount.toLocaleString()} goal
                             </Typography>
                         </Box>
                     </Paper>
                 </Slide>
 
-                <Grid container spacing={4} sx={{pb:5}}>
+                <Grid container spacing={4} sx={{ pb: 5 }}>
                     <Grid size={{ xs: 12, md: 7 }}>
                         <Card elevation={2} sx={{ borderRadius: 3 }}>
                             <CardContent sx={{ p: 4 }}>
@@ -163,6 +284,8 @@ export default function DonatePage() {
                                             variant={donationType === 'one-time' ? 'contained' : 'outlined'}
                                             onClick={() => setDonationType('one-time')}
                                             sx={{
+                                                backgroundColor: donationType === 'one-time' ? COLORS.style_1 : 'transparent',
+                                                color: donationType === 'one-time' ? '#fff' : 'text.primary',
                                                 py: 1.5,
                                                 textTransform: 'none',
                                                 fontSize: '1rem',
@@ -176,6 +299,8 @@ export default function DonatePage() {
                                             variant={donationType === 'monthly' ? 'contained' : 'outlined'}
                                             onClick={() => setDonationType('monthly')}
                                             sx={{
+                                                backgroundColor: donationType === 'monthly' ? COLORS.style_1 : 'transparent',
+                                                color: donationType === 'monthly' ? '#fff' : 'text.primary',
                                                 py: 1.5,
                                                 textTransform: 'none',
                                                 fontSize: '1rem',
@@ -193,14 +318,17 @@ export default function DonatePage() {
                                     </Typography>
                                     <Grid container spacing={2} sx={{ mb: 3 }}>
                                         {presetAmounts.map((amount) => (
-                                            <Grid size={{ xs: 6, sm: 3 }} xs={6} sm={3} key={amount}>
+                                            <Grid size={{ xs: 6, sm: 3 }} key={amount}>
                                                 <Button
                                                     fullWidth
                                                     variant={selectedAmount === amount ? 'contained' : 'outlined'}
                                                     onClick={() => handleAmountSelect(amount)}
                                                     sx={{
-                                                        py: 1,
-                                                        fontSize: '1.25rem',
+                                                        py: 2,
+                                                        backgroundColor: selectedAmount === amount ? COLORS.style_1 : 'transparent',
+                                                        color: selectedAmount === amount ? '#fff' : 'text.primary',
+                                                        textTransform: 'none',
+                                                        fontSize: '1.1rem',
                                                         fontWeight: 600,
                                                         transition: 'all 0.3s ease',
                                                         '&:hover': {
@@ -208,7 +336,7 @@ export default function DonatePage() {
                                                         },
                                                     }}
                                                 >
-                                                    ${amount}
+                                                    ₦{amount.toLocaleString()}
                                                 </Button>
                                             </Grid>
                                         ))}
@@ -220,8 +348,10 @@ export default function DonatePage() {
                                         value={customAmount}
                                         onChange={handleCustomAmountChange}
                                         type="number"
+                                        error={!!formErrors.amount}
+                                        helperText={formErrors.amount}
                                         InputProps={{
-                                            startAdornment: <Typography sx={{ mr: 1, color: 'text.secondary' }}>$</Typography>,
+                                            startAdornment: <Typography sx={{ mr: 1, color: 'text.secondary' }}>₦</Typography>,
                                         }}
                                         sx={{
                                             '& .MuiOutlinedInput-root': {
@@ -241,6 +371,10 @@ export default function DonatePage() {
                                                 fullWidth
                                                 label="First Name"
                                                 required
+                                                value={formData.firstName}
+                                                onChange={handleInputChange('firstName')}
+                                                error={!!formErrors.firstName}
+                                                helperText={formErrors.firstName}
                                                 sx={{ '& .MuiOutlinedInput-root': { borderRadius: 2 } }}
                                             />
                                         </Grid>
@@ -249,6 +383,10 @@ export default function DonatePage() {
                                                 fullWidth
                                                 label="Last Name"
                                                 required
+                                                value={formData.lastName}
+                                                onChange={handleInputChange('lastName')}
+                                                error={!!formErrors.lastName}
+                                                helperText={formErrors.lastName}
                                                 sx={{ '& .MuiOutlinedInput-root': { borderRadius: 2 } }}
                                             />
                                         </Grid>
@@ -258,43 +396,100 @@ export default function DonatePage() {
                                                 label="Email Address"
                                                 type="email"
                                                 required
+                                                value={formData.email}
+                                                onChange={handleInputChange('email')}
+                                                error={!!formErrors.email}
+                                                helperText={formErrors.email}
+                                                sx={{ '& .MuiOutlinedInput-root': { borderRadius: 2 } }}
+                                            />
+                                        </Grid>
+                                        <Grid size={{ xs: 12 }}>
+                                            <TextField
+                                                fullWidth
+                                                label="Phone Number"
+                                                type="tel"
+                                                required
+                                                placeholder="08012345678"
+                                                value={formData.phone}
+                                                onChange={handleInputChange('phone')}
+                                                error={!!formErrors.phone}
+                                                helperText={formErrors.phone}
                                                 sx={{ '& .MuiOutlinedInput-root': { borderRadius: 2 } }}
                                             />
                                         </Grid>
                                     </Grid>
                                 </Box>
 
-                                <Button
-                                    fullWidth
-                                    variant="contained"
-                                    size="large"
-                                    onMouseEnter={() => setIsHovered(true)}
-                                    onMouseLeave={() => setIsHovered(false)}
-                                    sx={{
-                                        py: 2,
-                                        fontSize: '1.125rem',
-                                        fontWeight: 600,
-                                        textTransform: 'none',
-                                        background: COLORS.primary,
-                                        fontFamily: FONT_FAMILY.primary,
-                                        transition: 'all 0.3s ease',
-                                        '&:hover': {
-                                            background: COLORS.style_2,
-                                            transform: 'translateY(-2px)',
-                                            boxShadow: '0 12px 24px rgba(102, 126, 234, 0.4)',
-                                        },
-                                    }}
-                                >
-                                    Donate ${customAmount || selectedAmount || 0}
-                                </Button>
+                                {formData.email && formData.firstName && formData.lastName && formData.phone && (customAmount || selectedAmount) ? (
+                                    <Box sx={{ position: 'relative' }}>
+                                        <style>
+                                            {`
+                                                .paystack-button {
+                                                    width: 100% !important;
+                                                    padding: 16px 24px !important;
+                                                    font-size: 1.125rem !important;
+                                                    font-weight: 600 !important;
+                                                    text-transform: none !important;
+                                                    background: ${COLORS.primary} !important;
+                                                    color: white !important;
+                                                    border: none !important;
+                                                    border-radius: 8px !important;
+                                                    cursor: pointer !important;
+                                                    font-family: ${FONT_FAMILY.primary} !important;
+                                                    transition: all 0.3s ease !important;
+                                                    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+                                                }
+                                                .paystack-button:hover {
+                                                    background: ${COLORS.style_2} !important;
+                                                    transform: translateY(-2px) !important;
+                                                    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6) !important;
+                                                }
+                                                .paystack-button:active {
+                                                    transform: translateY(0) !important;
+                                                }
+                                            `}
+                                        </style>
+                                        <PaystackButton
+                                            {...paystackConfig}
+                                            text={`Donate ₦${(customAmount || selectedAmount || 0).toLocaleString()}`}
+                                            onSuccess={handlePaystackSuccessAction}
+                                            onClose={handlePaystackCloseAction}
+                                            className="paystack-button"
+                                        />
+                                    </Box>
+                                ) : (
+                                    <Button
+                                        fullWidth
+                                        variant="contained"
+                                        size="large"
+                                        onClick={handleDonateClick}
+                                        sx={{
+                                            py: 2,
+                                            fontSize: '1.125rem',
+                                            fontWeight: 600,
+                                            textTransform: 'none',
+                                            background: COLORS.primary,
+                                            fontFamily: FONT_FAMILY.primary,
+                                            transition: 'all 0.3s ease',
+                                            boxShadow: '0 4px 15px rgba(102, 126, 234, 0.4)',
+                                            '&:hover': {
+                                                background: COLORS.style_2,
+                                                transform: 'translateY(-2px)',
+                                                boxShadow: '0 8px 20px rgba(102, 126, 234, 0.6)',
+                                            },
+                                        }}
+                                    >
+                                        Donate ₦{(customAmount || selectedAmount || 0).toLocaleString()}
+                                    </Button>
+                                )}
 
                                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 2, gap: 1 }}>
                                     <Shield24Regular style={{ fontSize: 16, color: '#10b981' }} />
-                                    <Typography variant="body1" sx={{
+                                    <Typography variant="body2" sx={{
                                         fontFamily: FONT_FAMILY.primary,
                                         color: 'text.secondary'
                                     }}>
-                                        Secure payment powered by industry-leading encryption
+                                        Secure payment powered by Paystack
                                     </Typography>
                                 </Box>
                             </CardContent>
@@ -317,7 +512,7 @@ export default function DonatePage() {
                                     fontFamily: FONT_FAMILY.primary,
                                     color: '#78350f', lineHeight: 1.7
                                 }}>
-                                    A ${selectedAmount || customAmount || 50} donation can provide educational materials for 10 children, meals for a family of four for a week, or medical supplies for a rural clinic.
+                                    A ₦{(selectedAmount || customAmount || 20000).toLocaleString()} donation can provide educational materials for 10 children, meals for a family of four for a week, or medical supplies for a rural clinic.
                                 </Typography>
                             </CardContent>
                         </Card>
@@ -357,7 +552,8 @@ export default function DonatePage() {
                                         >
                                             {React.cloneElement(item.icon, {
                                                 style: {
-                                                    color: item.color, fontFamily: FONT_FAMILY.primary,
+                                                    color: item.color,
+                                                    fontFamily: FONT_FAMILY.primary,
                                                     fontSize: 20
                                                 }
                                             })}

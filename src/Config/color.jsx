@@ -77,12 +77,12 @@ export const menuPalette = {
 }
 
 export const COLORS = {
-    primary: '#013886ff',
+    primary: '#df8703ff',
     secondary: '#050f22ff',
     style_3: '#da140dff',
-    style_1: '#559dfbff',
+    style_1: '#df8703ff',
     tertiary: '#048023ff',
     style_4: "#df8703ff",
-    style: "#013886ff",
+    style: "#df8703ff",
     style_2: "#111827",
 }

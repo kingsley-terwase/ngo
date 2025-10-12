@@ -168,7 +168,7 @@ const TagText = styled(Typography)(({ theme }) => ({
 }));
 
 const MainTitle = styled(Typography)(({ theme }) => ({
-  fontSize: '2.2rem',
+  fontSize: '1.6rem',
   fontWeight: 700,
   color: '#1f2937',
   lineHeight: 1.2,
@@ -184,8 +184,8 @@ const MainTitle = styled(Typography)(({ theme }) => ({
 }));
 
 const Description = styled(Typography)(({ theme }) => ({
-  fontSize: '1.1rem',
-  color: '#6b7280',
+  fontSize: '1.3rem',
+  color: '#282b31ff',
   lineHeight: 1.7,
   marginBottom: '40px',
   fontFamily: FONT_FAMILY.primary,
@@ -257,9 +257,9 @@ const charityItems = [
   { text: "Charity For Education", icon: <Book24Filled /> },
   { text: "Charity For Medical Health", icon: <HeartPulse24Filled /> },
   { text: "Charity For Clean Water", icon: <Drop24Filled /> },
-  { text: "Charity For Pets", icon: <Heart24Filled /> },
+  { text: "Charity For Enterprenuership", icon: <Heart24Filled /> },
   { text: "Charity For Education", icon: <LearningAppFilled /> },
-  { text: "Charity For Church", icon: <Building24Filled /> },
+  { text: "Charity For Victims of domestic Violence", icon: <Building24Filled /> },
 ];
 
 const AboutUs = () => {
@@ -313,20 +313,32 @@ const AboutUs = () => {
                 <TagText>About Us</TagText>
               </SectionTag>
 
-              <MainTitle variant="h4">
-                Helping is Great Virtue for Every Human's
+              <MainTitle variant="h6">
+                BRIEF PROFILE OF EVER
+                GIVING-HOPE EMPOWERMENT
+                FOUNDATION. (EGIHOF)
               </MainTitle>
 
               <Description>
-                It has been determined through research that when we feel to help, and
-                that someone authentically needs our assistance, and that no trick is being
-                played on us, we reliably do intervene. Interestingly, it has been found that
-                we are less likely to help an examination of the intrinsic worth of helping
-                others, transcending cultural, religious, and societal boundaries.
+                This organization, formerly known as Jesus the Shepherd of the Hopeless Empowerment Foundation, was registered with the Corporate Affairs Commission on 9th of March, 2017 with its registered office at no 31, Anointed Arena close, Kuje Abuja.
+
+                The organization has over these years focused on the following: <br />
+
+                {/* ✓promoting and supporting quality education through sponsoring the education of indigent students as well as the less privilege. <br />
+
+                ✓ supporting the poor and vulnerable persons such as rural women, widows, the aged, the girl child and the youth through several outreach programs with the intent of bettering their lives and eradicating poverty among these groups. <br /> */}
+
+                {/* ✓Health, food and nutrition centered outreaches to the rural areas, focusing on women, children and the aged. <br />
+
+                ✓Anchoring and sponsoring vocational/Skill acquisition and self-reliance training covering Bakery, Make-up, Hair-stylist, confectionaries, fashion designing, etc for rural women, widows and youths. <br />
+
+                ✓Assistance and support to victims of domestic/gender violence. <br /> */}
+
+                ✓Promoting and supporting youth innovators and entrepreneurship. <br />
               </Description>
 
               <CharityGrid container spacing={2}>
-                <Grid item xs={12} sm={6}>
+                <Grid size={{ xs: 12, sm: 6 }}>
                   {charityItems.slice(0, 3).map((item, index) => (
                     <CharityItem key={index} delay={index}>
                       <CharityIcon />
@@ -334,7 +346,7 @@ const AboutUs = () => {
                     </CharityItem>
                   ))}
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid  size={{ xs: 12, sm: 6 }}>
                   {charityItems.slice(3, 6).map((item, index) => (
                     <CharityItem key={index + 3} delay={index + 3}>
                       <CharityIcon />

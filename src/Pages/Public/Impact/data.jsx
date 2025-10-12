@@ -45,3 +45,20 @@ export const stories = [
     image: "PP"
   }
 ];
+
+
+export const galleryImages = [
+  { url: '/Images/ngo.png', caption: 'Community outreach program' },
+  { url: '/Images/ngo_1.png', caption: 'Vocational training session' },
+  { url: '/Images/ngo_2.png', caption: 'Education sponsorship event' },
+  { url: '/Images/ngo_3.png', caption: 'Health and nutrition outreach' },
+  { url: '/Images/ngo_4.png', caption: 'Skills acquisition training' },
+  { url: '/Images/ngo_5.png', caption: '' },
+  { url: '/Images/ngo_6.png', caption: '' },
+  { url: '/Images/ngo_7.png', caption: '' },
+  { url: '/Images/ngo_8.png', caption: '' },
+  { url: '/Images/ngo_9.png', caption: '' },
+  { url: '/Images/ngo_10.png', caption: '' },
+  { url: '/Images/ngo_11.png', caption: '' },
+  { url: '/Images/ngo_12.png', caption: '' },
+];

@@ -2,24 +2,32 @@ import React, { useState, useEffect } from 'react';
 import {
     Container, Box, Typography, Grid, Card, Button, Paper,
     Avatar, Chip, LinearProgress, List, ListItem, ListItemIcon,
-    ListItemText, Fade, Grow
+    ListItemText, Fade, Grow,
+    Modal,
+    IconButton
 } from '@mui/material';
 import {
     People, School, Home, TrendingUp, LocalHospital, Restaurant,
     FavoriteOutlined, ArrowForward, Public, AccountBalance,
     EmojiEvents, AutoGraph, Groups,
-    VolunteerActivism
+    VolunteerActivism,
+    Close,
+    ZoomIn
 } from '@mui/icons-material';
 import { TargetRegular } from '@fluentui/react-icons';
 import { FONT_FAMILY } from '../../../Config/font';
 import DonateSection from '../../../Components/DonateSection';
 import Slider from 'react-slick';
 import StorySlider from '../../../Components/StorySlider';
+import { galleryImages } from './data';
+
 
 const ImpactPage = () => {
     const [visible, setVisible] = useState(false);
     const [countUp, setCountUp] = useState({ children: 0, schools: 0, funds: 0 });
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [selectedImage, setSelectedImage] = React.useState(null);
+
 
     const nextSlide = () => {
         setCurrentIndex((prev) => (prev + 1) % stories.length);
@@ -110,7 +118,7 @@ const ImpactPage = () => {
     ];
 
     return (
-        <Box sx={{ bgcolor: '#FAFAFA',overflowX: "hidden", width: '100%', minHeight: '100vh' }}>
+        <Box sx={{ bgcolor: '#FAFAFA', overflowX: "hidden", width: '100%', minHeight: '100vh' }}>
 
             <div style={{
                 position: "relative",
@@ -340,42 +348,124 @@ const ImpactPage = () => {
 
                 <Box data-aos="fade-right" sx={{ mb: 12 }}>
                     <Typography variant="h4" sx={{ fontFamily: FONT_FAMILY.primary, fontWeight: 700, textAlign: 'center', mb: 6, color: '#1A237E' }}>
-                        Recognition & Achievements
+                        Gallery
                     </Typography>
-                    <Grid container spacing={3}>
-                        {milestones.map((milestone, index) => (
-                            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
-                                <Card sx={{
-                                    p: 3,
-                                    textAlign: 'center',
-                                    height: '100%',
-                                    borderRadius: 3,
-                                    border: '2px solid rgba(0,0,0,0.1)',
-                                    transition: 'all 0.3s ease',
-                                    '&:hover': {
-                                        transform: 'translateY(-4px)',
-                                        bgcolor: '#F5F9FF'
-                                    }
-                                }}>
-                                    <Box sx={{
-                                        display: 'inline-flex',
-                                        p: 2,
-                                        borderRadius: '50%',
-                                        bgcolor: '#1E88E515',
-                                        mb: 2
-                                    }}>
-                                        {React.cloneElement(milestone.icon, { sx: { fontSize: 36, color: '#1E88E5' } })}
+                    <Grid container spacing={2}>
+                        {galleryImages.map((image, index) => (
+                            <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={index}>
+                                <Card
+                                    onClick={() => setSelectedImage(image)}
+                                    sx={{
+                                        cursor: 'pointer',
+                                        height: 250,
+                                        borderRadius: 3,
+                                        overflow: 'hidden',
+                                        position: 'relative',
+                                        transition: 'all 0.3s ease',
+                                        '&:hover': {
+                                            transform: 'scale(1.05)',
+                                            boxShadow: 6
+                                        },
+                                        '&:hover .overlay': {
+                                            opacity: 1
+                                        }
+                                    }}
+                                >
+                                    <Box
+                                        component="img"
+                                        src={image.url}
+                                        alt={image.caption}
+                                        sx={{
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover'
+                                        }}
+                                    />
+                                    <Box
+                                        className="overlay"
+                                        sx={{
+                                            position: 'absolute',
+                                            top: 0,
+                                            left: 0,
+                                            right: 0,
+                                            bottom: 0,
+                                            bgcolor: 'rgba(0,0,0,0.5)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            opacity: 0,
+                                            transition: 'opacity 0.3s ease'
+                                        }}
+                                    >
+                                        <ZoomIn sx={{ color: 'white', fontSize: 48 }} />
                                     </Box>
-                                    <Typography variant="h6" sx={{ fontFamily: FONT_FAMILY.primary, fontWeight: 700, mb: 1, color: '#1A237E' }}>
-                                        {milestone.title}
-                                    </Typography>
-                                    <Typography variant="body2" sx={{ fontFamily: FONT_FAMILY.primary, color: '#546E7A' }}>
-                                        {milestone.desc}
-                                    </Typography>
                                 </Card>
                             </Grid>
                         ))}
                     </Grid>
+
+                    <Modal
+                        open={selectedImage !== null}
+                        onClose={() => setSelectedImage(null)}
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            p: 2
+                        }}
+                    >
+                        <Box sx={{
+                            position: 'relative',
+                            maxWidth: '90vw',
+                            maxHeight: '90vh',
+                            outline: 'none'
+                        }}>
+                            <IconButton
+                                onClick={() => setSelectedImage(null)}
+                                sx={{
+                                    position: 'absolute',
+                                    top: -5,
+                                    right: 0,
+                                    color: 'white',
+                                    bgcolor: 'rgba(0,0,0,0.7)',
+                                    '&:hover': {
+                                        bgcolor: 'rgba(0,0,0,0.9)'
+                                    }
+                                }}
+                            >
+                                <Close />
+                            </IconButton>
+                            {selectedImage && (
+                                <Box>
+                                    <Box
+                                        component="img"
+                                        src={selectedImage.url}
+                                        alt={selectedImage.caption}
+                                        sx={{
+                                            maxWidth: '100%',
+                                            maxHeight: '85vh',
+                                            objectFit: 'contain',
+                                            borderRadius: 2,
+                                            boxShadow: 24
+                                        }}
+                                    />
+                                    <Typography
+                                        sx={{
+                                            mt: 2,
+                                            color: 'white',
+                                            textAlign: 'center',
+                                            fontFamily: FONT_FAMILY.primary,
+                                            bgcolor: 'rgba(0,0,0,0.7)',
+                                            p: 1,
+                                            borderRadius: 1
+                                        }}
+                                    >
+                                        {selectedImage.caption}
+                                    </Typography>
+                                </Box>
+                            )}
+                        </Box>
+                    </Modal>
                 </Box>
                 <DonateSection />
             </Container>

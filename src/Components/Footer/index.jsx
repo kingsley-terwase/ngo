@@ -8,10 +8,10 @@ import {
   Container,
 } from "@mui/material";
 import {
-    LinkedIn,
-    Twitter,
-    YouTube,
-    Instagram
+  LinkedIn,
+  Twitter,
+  YouTube,
+  Instagram
 } from '@mui/icons-material';
 import { FONT_FAMILY } from "../../Config/font";
 import { COLORS } from "../../Config/color";
@@ -63,7 +63,7 @@ const Footer = () => {
               residential, commercial, and investment properties.
             </Typography>
 
-            <Box sx={{ display: 'flex',  mt: 1, }}>
+            <Box sx={{ display: 'flex', mt: 1, }}>
               <IconButton sx={{ color: 'rgba(255,255,255,0.7)', '&:hover': { color: 'white' } }}>
                 <Box sx={{ backgroundColor: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', px: 2, py: 2, borderRadius: 2, }}>
                   <LinkedIn />
@@ -112,10 +112,15 @@ const Footer = () => {
               Contact Us
             </Typography>
             <Typography variant="body2" sx={{ fontFamily: FONT_FAMILY.primary, mb: 3, color: '#fff', }} >
-             <Location20Regular /> 13th Street 47 W, New York, USA
+              <Location20Regular /> 31 Anointed Arena Sauka Extension Kuje Abuja, FCT
             </Typography>
             <Typography variant="body2" sx={{ fontFamily: FONT_FAMILY.primary, mb: 3, color: '#fff', }} >
-             <Call20Regular /> +8806587952l
+              <Location20Regular />CORPORATE ADDRESS
+              31 Anointed Arena Sauka Extension
+              Kuje Abuja, FCT
+            </Typography>
+            <Typography variant="body2" sx={{ fontFamily: FONT_FAMILY.primary, mb: 3, color: '#fff', }} >
+              <Call20Regular /> +8806587952l
             </Typography>
             <Typography variant="body2" sx={{ fontFamily: FONT_FAMILY.primary, mb: 3, color: '#fff', }} >
               <Mail20Regular /> estaty@gmail.com

@@ -17,6 +17,11 @@ import { useNavigate } from "react-router-dom";
 
 const slides = [
     {
+        title: "We are Concern",
+        description:
+            "We are Passionate, We are deliberate, We cause Change, We are positive.",
+    },
+    {
         title: "Give Every Child a Chance",
         description:
             "Your support helps provide education, shelter, and hope for children in need. Together, we can create brighter futures.",
@@ -44,8 +49,8 @@ const pulse = keyframes`
 `;
 
 const glow = keyframes`
-  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6), 0 0 60px rgba(147, 51, 234, 0.4); }
+  0%, 100% { box-shadow: 0 0 20px rgba(246, 196, 59, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(241, 209, 25, 0.6), 0 0 60px rgba(250, 181, 33, 0.4); }
 `;
 
 const HeroContainer = styled(Box)(({ theme }) => ({
