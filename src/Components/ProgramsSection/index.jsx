@@ -331,14 +331,6 @@ const ProgramsSection = () => {
                       </FeatureItem>
                     ))}
                   </FeaturesList>
-
-                  <LearnMoreButton 
-                    className="learn-more-btn"
-                    endIcon={<ArrowRight24Filled />}
-                    fullWidth
-                  >
-                    Learn More
-                  </LearnMoreButton>
                 </CardContent>
               </ProgramCard>
             </Grid>

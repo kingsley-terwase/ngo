@@ -24,14 +24,28 @@ import { MenuOutlined } from '@mui/icons-material';
 
 const Header = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const [scrolled, setScrolled] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-    const handleDonate = () => {
-        navigate('/donate');
-    }
+    // Scroll to top function
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    // Navigation handler with scroll to top
+    const handleNavigation = (path) => {
+        navigate(path);
+        // Small delay to ensure navigation completes before scrolling
+        setTimeout(() => {
+            scrollToTop();
+        }, 100);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -43,6 +57,11 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Scroll to top whenever route changes
+    useEffect(() => {
+        scrollToTop();
+    }, [location.pathname]);
+
     const handleMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -51,31 +70,37 @@ const Header = () => {
         setAnchorEl(null);
     };
 
-
-    const navigate = useNavigate();
+    const handleDonate = () => {
+        handleNavigation('/donate');
+    };
 
     const handleContact = () => {
-        navigate('/contact');
-    }
+        handleNavigation('/contact');
+    };
 
     const handleVolunteer = () => {
-        navigate('/volunteer');
-    }
+        handleNavigation('/volunteer');
+    };
+
     const handleCauses = () => {
-        navigate('/causes');
-    }
+        handleNavigation('/causes');
+    };
+
     const handleAbout = () => {
-        navigate('/about');
-    }
-    const handleBlog = () => {
-        navigate('/blog');
-    }
+        handleNavigation('/about');
+    };
+
+    // const handleBlog = () => {
+    //     handleNavigation('/blog');
+    // };
+
     const handleImpact = () => {
-        navigate('/impact');
-    }
+        handleNavigation('/impact');
+    };
+
     const handleHome = () => {
-        navigate('/');
-    }
+        handleNavigation('/');
+    };
 
     return (
         <Box>
@@ -98,24 +123,23 @@ const Header = () => {
                                     zIndex: theme.zIndex.appBar + 1,
                                 }}
                             >
-                                ELHEF
+                                EGIHOF
                             </Typography>
                         </LogoContainer>
 
                         {!isMobile && (
                             <Box sx={{ display: 'flex', gap: 2 }}>
-
                                 <NavButton onClick={handleAbout} scrolled={scrolled}>About us</NavButton>
                                 <NavButton scrolled={scrolled} onClick={handleVolunteer}>Volunteer</NavButton>
-                                <NavButton scrolled={scrolled} onClick={handleCauses} >
+                                <NavButton scrolled={scrolled} onClick={handleCauses}>
                                     Causes
                                 </NavButton>
-                                <NavButton onClick={handleImpact} scrolled={scrolled} >
+                                <NavButton onClick={handleImpact} scrolled={scrolled}>
                                     Impact
                                 </NavButton>
-                                <NavButton scrolled={scrolled} onClick={handleBlog}>
+                                {/* <NavButton scrolled={scrolled} onClick={handleBlog}>
                                     Blogs
-                                </NavButton>
+                                </NavButton> */}
                                 <NavButton scrolled={scrolled} onClick={handleContact}>Contact</NavButton>
                             </Box>
                         )}
@@ -126,7 +150,9 @@ const Header = () => {
                         }}>
                             {!isMobile && (
                                 <>
-                                    <UserButton onClick={handleDonate} variant="Donate"><HandOpenHeart32Filled /> Donate Now</UserButton>
+                                    <UserButton onClick={handleDonate} variant="Donate">
+                                        <HandOpenHeart32Filled /> Donate Now
+                                    </UserButton>
                                 </>
                             )}
 
@@ -139,6 +165,7 @@ const Header = () => {
                                 </IconButton>
                             )}
                         </Box>
+
                         <Menu
                             anchorEl={anchorEl}
                             open={Boolean(anchorEl)}
@@ -179,12 +206,14 @@ const Header = () => {
                             <MenuItem onClick={() => { handleContact(); handleMenuClose(); }}>
                                 Contact
                             </MenuItem>
+                            <MenuItem onClick={() => { handleDonate(); handleMenuClose(); }}>
+                                Donate Now
+                            </MenuItem>
                         </Menu>
-
-
                     </Toolbar>
                 </Container>
             </StyledAppBar>
+            
             {location.pathname === '/' && (
                 <HeroSection>
                     <Hero />

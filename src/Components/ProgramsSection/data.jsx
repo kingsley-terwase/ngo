@@ -25,7 +25,7 @@ export const programsData = [
     gradient:
       "linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 100%)",
     image:
-      "https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", // Kids learning in class
+      "/Images/ngo_8.png", 
   },
   {
     icon: <Food24Filled style={{ fontSize: "48px" }} />,
@@ -43,7 +43,7 @@ export const programsData = [
     gradient:
       "linear-gradient(135deg, #fef2f2 0%, #fecaca 50%, #fca5a5 100%)",
     image:
-      "/Images/nut.png",
+      "/Images/ngo.png",
   },
   {
     icon: <ShieldCheckmark24Filled style={{ fontSize: "48px" }} />,
@@ -61,7 +61,7 @@ export const programsData = [
     gradient:
       "linear-gradient(135deg, #ecfdf5 0%, #a7f3d0 50%, #6ee7b7 100%)",
     image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", // Child holding adult's hand
+      "/Images/ngo_3.png",
   },
   {
     icon: <HeartPulse24Filled style={{ fontSize: "48px" }} />,
@@ -79,7 +79,7 @@ export const programsData = [
     gradient:
       "linear-gradient(135deg, #f5f3ff 0%, #c4b5fd 50%, #a78bfa 100%)",
     image:
-      "/Images/health.png",
+      "/Images/ngo_12.png",
   },
   {
     icon: <PersonSupport24Filled style={{ fontSize: "48px" }} />,
@@ -97,7 +97,7 @@ export const programsData = [
     gradient:
       "linear-gradient(135deg, #fffbeb 0%, #fed7aa 50%, #fdba74 100%)",
     image:
-      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", // Child comfort support
+      "/Images/ngo_10.png", 
   },
   {
     icon: <Sport24Filled style={{ fontSize: "48px" }} />,
@@ -115,6 +115,6 @@ export const programsData = [
     gradient:
       "linear-gradient(135deg, #ecfeff 0%, #a5f3fc 50%, #67e8f9 100%)",
     image:
-      "https://images.unsplash.com/photo-1515168833906-d2a3b82b302a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", // Kids painting & playing
+      "/Images/ngo_7.png", 
   },
 ];

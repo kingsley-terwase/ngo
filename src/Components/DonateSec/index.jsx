@@ -28,7 +28,7 @@ export default function DonateSec() {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    backgroundImage: 'url("https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1200")',
+                    backgroundImage: 'url("Images/ngo_3.png ")',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     '&::after': {

@@ -26,7 +26,7 @@ const statsData = [
   {
     icon: <HeartFilled style={{ fontSize: "50px" }} />,
     value: "15,000+",
-    label: "Children Fed Daily",
+    label: "Children Fed",
     description: "Nutritious meals provided to combat hunger and support healthy development.",
     color: "#ef4444",
     bgGradient: "linear-gradient(135deg, #fef2f2 0%, #fecaca 100%)",

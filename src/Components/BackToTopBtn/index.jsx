@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Fab, Zoom } from "@mui/material";
 import { ArrowUpward } from "@mui/icons-material";
+import { COLORS } from "../../Config/color";
+
 
 const BackToTop = () => {
     const [visible, setVisible] = useState(false);
@@ -28,10 +30,10 @@ const BackToTop = () => {
     return (
         <Zoom in={visible}>
             <Fab
-                color="primary"
                 size="medium"
                 onClick={scrollToTop}
                 sx={{
+                    backgroundColor: COLORS.primary,
                     position: "fixed",
                     bottom: 32,
                     right: 32,

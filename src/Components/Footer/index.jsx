@@ -44,7 +44,7 @@ const Footer = () => {
                 <Box component='img' src='/Logo/Logo.png' sx={{ width: '70px', }} />
               </Box>
               <Typography variant="h6" sx={{ textTransform: 'uppercase', fontFamily: FONT_FAMILY.primary, color: '#fff', fontWeight: 600 }}>
-                ELHEF
+                EGIHOF
               </Typography>
             </Box>
 
@@ -58,9 +58,7 @@ const Footer = () => {
                 letterSpacing: '0.07em',
               }}
             >
-              Estaty is a dynamic and forward-thinking real estate company
-              dedicated to providing exceptional real estate services across
-              residential, commercial, and investment properties.
+              This organization, formerly known as Jesus the Shepherd of the Hopeless Empowerment Foundation, was registered with the Corporate Affairs Commission on 9th of March, 2017 with its registered office at no 31, Anointed Arena close, Kuje Abuja.
             </Typography>
 
             <Box sx={{ display: 'flex', mt: 1, }}>
@@ -99,10 +97,10 @@ const Footer = () => {
                 Contact
               </Button>
               <Button sx={{ color: '#fff', textTransform: 'capitalize', fontFamily: FONT_FAMILY.primary, justifyContent: "flex-start" }}>
-                Vendors
+                Volunteers
               </Button>
               <Button sx={{ color: '#fff', textTransform: 'capitalize', fontFamily: FONT_FAMILY.primary, justifyContent: "flex-start" }}>
-                FAQ
+                Donate
               </Button>
             </Box>
           </Grid>
@@ -120,10 +118,10 @@ const Footer = () => {
               Kuje Abuja, FCT
             </Typography>
             <Typography variant="body2" sx={{ fontFamily: FONT_FAMILY.primary, mb: 3, color: '#fff', }} >
-              <Call20Regular /> +8806587952l
+              <Call20Regular /> +234:
             </Typography>
             <Typography variant="body2" sx={{ fontFamily: FONT_FAMILY.primary, mb: 3, color: '#fff', }} >
-              <Mail20Regular /> estaty@gmail.com
+              <Mail20Regular /> egihof@gmail.com
             </Typography>
           </Grid>
         </Grid>

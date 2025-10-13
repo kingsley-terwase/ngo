@@ -19,7 +19,7 @@ export const causes = [
         supporters: 342,
         icon: <BookOpen24Regular />,
         color: '#667eea',
-        image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&h=400&fit=crop'
+        image: '/Images/ngo_8.png'
     },
     {
         title: 'Nutrition & Health',
@@ -29,7 +29,7 @@ export const causes = [
         supporters: 521,
         icon: <Food24Regular />,
         color: '#f093fb',
-        image: 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&h=400&fit=crop'
+        image: '/Images/ngo.png'
     },
     {
         title: 'Safe Shelter',
@@ -39,7 +39,7 @@ export const causes = [
         supporters: 289,
         icon: <Home24Regular />,
         color: '#4facfe',
-        image: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=400&fit=crop'
+        image: '/Images/ngo_3.png'
     },
     {
         title: 'Mental Wellness',
@@ -49,7 +49,7 @@ export const causes = [
         supporters: 198,
         icon: <Heart24Regular />,
         color: '#fa709a',
-        image: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=600&h=400&fit=crop'
+        image: '/Images/ngo_10.png'
     },
     {
         title: 'Sports & Recreation',
@@ -59,7 +59,7 @@ export const causes = [
         supporters: 156,
         icon: <Sport24Regular />,
         color: '#764ba2',
-        image: 'https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600&h=400&fit=crop'
+        image: '/Images/ngo_6.png'
     },
     {
         title: 'Youth Empowerment',
@@ -69,6 +69,6 @@ export const causes = [
         supporters: 267,
         icon: <PersonRegular />,
         color: '#30cfd0',
-        image: 'https://images.unsplash.com/photo-1529390079861-591de354faf5?w=600&h=400&fit=crop'
+        image: '/Images/ngo_9.png'
     }
 ];

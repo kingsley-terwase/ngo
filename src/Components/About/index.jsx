@@ -96,7 +96,7 @@ const MainImage = styled('img')(({ theme }) => ({
 
 const SecondaryImage = styled('img')(({ theme }) => ({
   width: '100%',
-  height: '500px',
+  height: '300px',
   border: '5px dotted #f93',
   objectFit: 'cover',
   borderRadius: '24px',
@@ -276,7 +276,7 @@ const AboutUs = () => {
             <Box sx={{ position: 'relative' }}>
               <ImageContainer>
                 <MainImage
-                  src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="/Images/ngo_5.png"
                   alt="Children studying"
                 />
                 <BrandTag>
@@ -291,7 +291,7 @@ const AboutUs = () => {
               <Box
                 sx={{
                   position: 'absolute',
-                  top: '60px',
+                  bottom: '10px',
                   right: '-40px',
                   width: '280px',
                   zIndex: 3,
@@ -300,7 +300,7 @@ const AboutUs = () => {
                 }}
               >
                 <SecondaryImage
-                  src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                  src="/Images/ngo_6.png"
                   alt="Happy children"
                 />
               </Box>

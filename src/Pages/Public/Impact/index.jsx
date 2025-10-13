@@ -345,7 +345,7 @@ const ImpactPage = () => {
                 <Box data-aos="fade-left">
                     <StorySlider />
                 </Box>
-
+{/* 
                 <Box data-aos="fade-right" sx={{ mb: 12 }}>
                     <Typography variant="h4" sx={{ fontFamily: FONT_FAMILY.primary, fontWeight: 700, textAlign: 'center', mb: 6, color: '#1A237E' }}>
                         Gallery
@@ -466,7 +466,7 @@ const ImpactPage = () => {
                             )}
                         </Box>
                     </Modal>
-                </Box>
+                </Box> */}
                 <DonateSection />
             </Container>
         </Box>
