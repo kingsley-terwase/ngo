@@ -200,9 +200,9 @@ const Header = () => {
                             <MenuItem onClick={() => { handleImpact(); handleMenuClose(); }}>
                                 Impact
                             </MenuItem>
-                            <MenuItem onClick={() => { handleBlog(); handleMenuClose(); }}>
+                            {/* <MenuItem onClick={() => { handleBlog(); handleMenuClose(); }}>
                                 Blogs
-                            </MenuItem>
+                            </MenuItem> */}
                             <MenuItem onClick={() => { handleContact(); handleMenuClose(); }}>
                                 Contact
                             </MenuItem>
