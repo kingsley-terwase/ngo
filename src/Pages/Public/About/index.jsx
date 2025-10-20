@@ -295,7 +295,7 @@ export function AboutUsPage() {
                 </Box>
                 <Grid container spacing={2}>
                     {[
-                        { name: 'Ann Judith Chinonso-Ajah', role: 'Director', image: '/Images/ngo_6.png' },
+                        { name: 'Ann Judith Chinonso-Ajah', role: 'Director', image: '/Images/ngo_19.png' },
                         { name: 'Benedict John Chinonso', role: 'Administrative Manager', image: '/Illus/admin_1.png' },
                         { name: 'Chizoma Izama', role: 'Project Manager', image: '/Illus/admin_2.png' },
                         { name: 'Arinze Okenwa John', role: 'Information Officer ICT', image: '/Illus/admin_3.png', },

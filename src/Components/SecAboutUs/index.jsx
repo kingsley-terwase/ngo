@@ -267,7 +267,7 @@ const SecAboutUs = () => {
                         <Box sx={{ position: 'relative' }}>
                             <ImageContainer>
                                 <MainImage
-                                    src="/Images/ngo_5.png"
+                                    src="/Images/ngo_19.png"
                                     alt="Children studying"
                                 />
                                 <BrandTag>
@@ -290,10 +290,10 @@ const SecAboutUs = () => {
                                     display: { xs: 'none', md: 'block' }
                                 }}
                             >
-                                <SecondaryImage
+                                {/* <SecondaryImage
                                     src="/Images/ngo_6.png"
                                     alt="Happy children"
-                                />
+                                /> */}
                             </Box>
                         </Box>
                         <Box sx={{mt:4}}>
