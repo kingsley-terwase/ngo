@@ -38,7 +38,7 @@ export const LogoIcon = styled(Box)(({ theme }) => ({
 export const HeroSection = styled(Box)(() => ({
   minHeight: "90vh",
   width: "100%",               
-  backgroundImage: 'url("/Images/child_1.png")',
+  backgroundImage: 'url("/Images/ngo_8.png")',
   backgroundSize: "cover",
   backgroundPosition: "center",
   display: "flex",

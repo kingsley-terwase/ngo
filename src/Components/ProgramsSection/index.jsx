@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography, Grid, Container, Card, CardContent, Button } from "@mui/material";
 import { styled, keyframes } from "@mui/material/styles";
 import {
   ArrowRight24Filled,
+  ArrowRight24Regular,
+  CheckmarkCircle24Regular,
 } from "@fluentui/react-icons";
 import { FONT_FAMILY } from "../../Config/font";
 import { COLORS } from "../../Config/color";
 import { programsData } from "./data";
+import { causes } from "../../Pages/Public/Causes/data";
 
 
 
@@ -281,6 +284,11 @@ const LearnMoreButton = styled(Button)(({ theme }) => ({
 }));
 
 const ProgramsSection = () => {
+  const [hoverCard, setHoverCard] = useState(null);
+
+  const handleDonate = () => {
+    navigate('/donate')
+  }
   return (
     <ProgramsContainer>
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
@@ -289,53 +297,74 @@ const ProgramsSection = () => {
             Our Core Programs
           </HeaderTitle>
           <HeaderSubtitle data-aos='fade-down'>
-            Comprehensive initiatives designed to address every aspect of a child's wellbeing, 
+            Comprehensive initiatives designed to address every aspect of a child's wellbeing,
             from education and nutrition to protection and emotional support.
           </HeaderSubtitle>
         </SectionHeader>
 
-        <Grid container spacing={5}>
-          {programsData.map((program, index) => (
-            <Grid size={{xs:12, sm:6, md:6, lg:4 }} data-aos='fade-down' key={index}>
-              <ProgramCard 
-                programGradient={program.gradient}
-                index={index}
-                elevation={0}
-              >
-                <ProgramImage component='img' src={program.image} className="program-image" />
-                
-                <CardContent sx={{ padding: '40px 32px' }}>
-                  <IconContainer 
-                    className="program-icon"
-                    iconColor={program.color}
-                  >
-                    {program.icon}
-                  </IconContainer>
+        <div data-aos='fade-right' style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+          gap: '32px'
+        }}>
+          {causes.map((cause, index) => (
+            <div
+              key={index}
+              onMouseEnter={() => setHoverCard(index)}
+              onMouseLeave={() => setHoverCard(null)}
+              style={{
+                background: 'white',
+                borderRadius: '20px',
+                overflow: 'hidden',
+                boxShadow: hoverCard === index ? '0 20px 60px rgba(0,0,0,0.15)' : '0 4px 20px rgba(0,0,0,0.08)',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                transform: hoverCard === index ? 'translateY(-12px)' : 'translateY(0)',
+                cursor: 'pointer'
+              }}
+            >
 
-                  <ProgramSubtitle>
-                    {program.subtitle}
-                  </ProgramSubtitle>
 
-                  <ProgramTitle variant="h4">
-                    {program.title}
-                  </ProgramTitle>
+              <div style={{ padding: '28px' }}>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: '600', color: '#2c3e50', marginBottom: '12px' }}>
+                  {cause.title}
+                </h3>
+                <p style={{ color: '#5a6c7d', lineHeight: '1.6', marginBottom: '24px', fontSize: '0.95rem' }}>
+                  {cause.description}
+                </p>
 
-                  <ProgramDescription>
-                    {program.description}
-                  </ProgramDescription>
-
-                  <FeaturesList>
-                    {program.features.map((feature, idx) => (
-                      <FeatureItem key={idx}>
-                        {feature}
-                      </FeatureItem>
-                    ))}
-                  </FeaturesList>
-                </CardContent>
-              </ProgramCard>
-            </Grid>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  paddingTop: '20px',
+                  borderTop: '1px solid #e8ecf1'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#5a6c7d', fontSize: '0.9rem' }}>
+                    <CheckmarkCircle24Regular style={{ color: cause.color }} />
+                    <span>{cause.supporters} supporters</span>
+                  </div>
+                  <button onClick={handleDonate} style={{
+                    padding: '10px 24px',
+                    background: hoverCard === index ? `linear-gradient(135deg, ${cause.color}, ${cause.color}dd)` : '#f5f7fa',
+                    color: hoverCard === index ? 'white' : cause.color,
+                    border: 'none',
+                    borderRadius: '8px',
+                    fontSize: '0.95rem',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px'
+                  }}>
+                    Donate Now
+                    <ArrowRight24Regular style={{ fontSize: '16px' }} />
+                  </button>
+                </div>
+              </div>
+            </div>
           ))}
-        </Grid>
+        </div>
       </Container>
     </ProgramsContainer>
   );

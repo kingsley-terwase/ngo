@@ -17,7 +17,7 @@ import { COLORS } from "../../Config/color";
 const statsData = [
   {
     icon: <CollectionsRegular style={{ fontSize: "50px" }} />,
-    value: "5,000+",
+    value: "500+",
     label: "Children Educated",
     description: "Lives transformed through quality education and learning opportunities in underserved communities.",
     color: "#3b82f6",
@@ -25,7 +25,7 @@ const statsData = [
   },
   {
     icon: <HeartFilled style={{ fontSize: "50px" }} />,
-    value: "15,000+",
+    value: "1000+",
     label: "Children Fed",
     description: "Nutritious meals provided to combat hunger and support healthy development.",
     color: "#ef4444",
@@ -33,7 +33,7 @@ const statsData = [
   },
   {
     icon: <HomeFilled style={{ fontSize: "50px" }} />,
-    value: "1,200+",
+    value: "50+",
     label: "Safe Shelters",
     description: "Secure homes and protective environments created for vulnerable children.",
     color: "#10b981",
@@ -41,7 +41,7 @@ const statsData = [
   },
   {
     icon: <PeopleFilled style={{ fontSize: "50px" }} />,
-    value: "25,000+",
+    value: "5,000+",
     label: "Lives Impacted",
     description: "Children and families reached through our comprehensive support programs.",
     color: "#8b5cf6",
@@ -255,13 +255,12 @@ const StatsSection = () => {
             Our Impact in Numbers
           </HeaderTitle>
           <HeaderSubtitle>
-            Every statistic represents a child whose life has been transformed through compassion,
-            dedication, and the unwavering belief that every child deserves a brighter future.
+            Every statistic represents a life transformed — a child given hope, a widow empowered, and a community uplifted through compassion, dedication, and the unwavering belief that every human being deserves a brighter and dignified future.
           </HeaderSubtitle>
         </SectionHeader>
 
-        <Grid container spacing={4} 
-           justifyContent="center">
+        <Grid container spacing={4}
+          justifyContent="center">
           {statsData.map((stat, index) => (
             <Grid
               size={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 3 }}

@@ -14,12 +14,25 @@ import {
     Close,
     ZoomIn
 } from '@mui/icons-material';
-import { TargetRegular } from '@fluentui/react-icons';
+import {
+    BookOpen24Regular,
+    Food24Regular,
+    Heart24Regular,
+    Home24Regular,
+    Sport24Regular,
+    PersonRegular,
+    ArrowRight24Regular,
+    Target24Regular,
+    CheckmarkCircle24Regular,
+    TargetRegular
+} from '@fluentui/react-icons';
 import { FONT_FAMILY } from '../../../Config/font';
 import DonateSection from '../../../Components/DonateSection';
 import Slider from 'react-slick';
 import StorySlider from '../../../Components/StorySlider';
-import { galleryImages } from './data';
+import { galleryImages, programs } from './data';
+import { causes } from '../Causes/data';
+import { useNavigate } from 'react-router-dom';
 
 
 const ImpactPage = () => {
@@ -28,6 +41,14 @@ const ImpactPage = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedImage, setSelectedImage] = React.useState(null);
 
+    const navigate = useNavigate();
+    const [hoverCard, setHoverCard] = useState(null);
+
+    const getProgress = (raised, goal) => (raised / goal) * 100;
+
+    const handleDonate = () => {
+        navigate('/donate')
+    }
 
     const nextSlide = () => {
         setCurrentIndex((prev) => (prev + 1) % stories.length);
@@ -70,52 +91,6 @@ const ImpactPage = () => {
         { number: `${countUp.funds}%`, label: 'Direct Impact', icon: <AutoGraph />, color: '#7B1FA2', gradient: 'linear-gradient(135deg, #7B1FA2 0%, #9C27B0 100%)' }
     ];
 
-    const programs = [
-        {
-            title: 'Global Education Initiative',
-            icon: <School />,
-            progress: 85,
-            color: '#1E88E5',
-            description: 'Transforming futures through accessible, quality education for every child',
-            metrics: [
-                { label: 'Students Enrolled', value: '15,000+' },
-                { label: 'Graduation Rate', value: '95%' },
-                { label: 'Teachers Trained', value: '500+' }
-            ]
-        },
-        {
-            title: 'Healthcare Access Program',
-            icon: <LocalHospital />,
-            progress: 92,
-            color: '#E91E63',
-            description: 'Delivering comprehensive healthcare services to underserved communities',
-            metrics: [
-                { label: 'Medical Consultations', value: '25,000+' },
-                { label: 'Clinics Operating', value: '12' },
-                { label: 'Immunization Rate', value: '98%' }
-            ]
-        },
-        {
-            title: 'Nutrition & Wellness',
-            icon: <Restaurant />,
-            progress: 78,
-            color: '#00897B',
-            description: 'Combating malnutrition and fostering healthy development',
-            metrics: [
-                { label: 'Daily Meals Served', value: '30,000' },
-                { label: 'Malnutrition Reduced', value: '80%' },
-                { label: 'Community Gardens', value: '100+' }
-            ]
-        }
-    ];
-
-
-    const milestones = [
-        { icon: <EmojiEvents />, title: 'International Recognition', desc: 'UN Sustainable Development Award 2024' },
-        { icon: <Groups />, title: 'Community Partnerships', desc: '500+ local organizations' },
-        { icon: <AccountBalance />, title: 'Financial Transparency', desc: 'Top-rated by charity evaluators' },
-        { icon: <VolunteerActivism />, title: 'Volunteer Network', desc: '10,000+ active volunteers' }
-    ];
 
     return (
         <Box sx={{ bgcolor: '#FAFAFA', overflowX: "hidden", width: '100%', minHeight: '100vh' }}>
@@ -164,55 +139,7 @@ const ImpactPage = () => {
                     </p>
                 </div>
             </div>
-            <Container maxWidth="lg" sx={{ mt: -6, position: 'relative', zIndex: 2 }}>
-                <Grid data-aos="zoom-out" container spacing={3} sx={{ mb: 10 }}>
-                    {stats.map((stat, index) => (
-                        <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
-                            <Grow in={visible} timeout={800 + index * 200}>
-                                <Card sx={{
-                                    p: 4,
-                                    background: 'white',
-                                    border: '1px solid rgba(0,0,0,0.08)',
-                                    borderRadius: 2,
-                                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                                    '&:hover': {
-                                        transform: 'translateY(-12px)',
-                                        boxShadow: '0 20px 40px rgba(0,0,0,0.12)',
-                                        border: `1px solid ${stat.color}`,
-                                    }
-                                }}>
-                                    <Box sx={{
-                                        background: stat.gradient,
-                                        borderRadius: 2,
-                                        p: 2,
-                                        display: 'inline-flex',
-                                        mb: 3
-                                    }}>
-                                        {React.cloneElement(stat.icon, { sx: { fontSize: 32, color: 'white' } })}
-                                    </Box>
-                                    <Typography variant="h3" sx={{
-                                        fontWeight: 800,
-                                        color: stat.color,
-                                        mb: 1,
-                                        fontSize: '2.5rem',
-                                        fontFamily: FONT_FAMILY.primary,
-                                    }}>
-                                        {stat.number}
-                                    </Typography>
-                                    <Typography variant="body1" sx={{
-                                        color: '#546E7A',
-                                        fontWeight: 500,
-                                        fontSize: '0.95rem',
-                                        fontFamily: FONT_FAMILY.primary,
-
-                                    }}>
-                                        {stat.label}
-                                    </Typography>
-                                </Card>
-                            </Grow>
-                        </Grid>
-                    ))}
-                </Grid>
+            <Container maxWidth="lg" sx={{ mt: 6, position: 'relative', zIndex: 2 }}>
 
                 <Box data-aos="fade-down" sx={{ mb: 12 }}>
                     <Box sx={{ textAlign: 'center', mb: 8 }}>
@@ -220,7 +147,7 @@ const ImpactPage = () => {
                             fontFamily: FONT_FAMILY.primary,
                             fontSize: '0.9rem', letterSpacing: 2, color: '#1A237E', fontWeight: 600
                         }}>
-                            OUR PROGRAMS
+                            OUR IMPACT
                         </Typography>
                         <Typography variant="h3" sx={{
                             fontFamily: FONT_FAMILY.primary,
@@ -228,125 +155,70 @@ const ImpactPage = () => {
                         }}>
                             Comprehensive Impact Initiatives
                         </Typography>
-                        <Typography variant="h6" sx={{
-                            fontFamily: FONT_FAMILY.primary,
-                            color: '#546E7A', maxWidth: '700px', mx: 'auto', fontWeight: 400
-                        }}>
-                            Strategically designed programs that address critical needs and create measurable, sustainable outcomes
-                        </Typography>
                     </Box>
 
-                    <Grid container spacing={4}>
-                        {programs.map((program, index) => (
-                            <Grid size={{ xs: 12, md: 4 }} key={index}>
-                                <Card sx={{
-                                    height: '100%',
-                                    borderRadius: 3,
+                    <div data-aos='fade-right' style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+                        gap: '32px'
+                    }}>
+                        {programs.map((cause, index) => (
+                            <div
+                                key={index}
+                                onMouseEnter={() => setHoverCard(index)}
+                                onMouseLeave={() => setHoverCard(null)}
+                                style={{
+                                    background: 'white',
+                                    borderRadius: '20px',
                                     overflow: 'hidden',
-                                    border: '1px solid rgba(0,0,0,0.08)',
-                                    transition: 'all 0.3s ease',
-                                    '&:hover': {
-                                        boxShadow: '0 16px 32px rgba(0,0,0,0.1)',
-                                        transform: 'translateY(-4px)'
-                                    }
-                                }}>
-                                    <Box sx={{
-                                        background: `linear-gradient(135deg, ${program.color}15 0%, ${program.color}05 100%)`,
-                                        p: 4,
-                                        borderBottom: `3px solid ${program.color}`
+                                    boxShadow: hoverCard === index ? '0 20px 60px rgba(0,0,0,0.15)' : '0 4px 20px rgba(0,0,0,0.08)',
+                                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                                    transform: hoverCard === index ? 'translateY(-12px)' : 'translateY(0)',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
+
+                                    <Box component='img' src={cause.image} sx={{ width: '100%', }} />
+                                
+                                </div>
+
+                                <div style={{ padding: '28px' }}>
+                                    <h3 style={{ fontSize: '1.5rem', fontWeight: '600', color: '#2c3e50', marginBottom: '12px' }}>
+                                        {cause.title}
+                                    </h3>
+                                    <div style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center',
+                                        paddingTop: '20px',
+                                        borderTop: '1px solid #e8ecf1'
                                     }}>
-                                        <Box sx={{
-                                            display: 'inline-flex',
-                                            p: 2,
-                                            borderRadius: 2,
-                                            background: 'white',
-                                            mb: 2,
-                                            boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                                        <button onClick={handleDonate} style={{
+                                            padding: '10px 24px',
+                                            background: hoverCard === index ? `linear-gradient(135deg, ${cause.color}, ${cause.color}dd)` : '#f5f7fa',
+                                            color: hoverCard === index ? 'white' : cause.color,
+                                            border: 'none',
+                                            borderRadius: '8px',
+                                            fontSize: '0.95rem',
+                                            fontWeight: '600',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.3s',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '6px'
                                         }}>
-                                            {React.cloneElement(program.icon, { sx: { fontSize: 36, color: program.color } })}
-                                        </Box>
-                                        <Typography variant="h5" sx={{
-                                            fontFamily: FONT_FAMILY.primary,
-                                            fontWeight: 700, mb: 2, color: '#1A237E'
-                                        }}>
-                                            {program.title}
-                                        </Typography>
-                                        <Typography variant="body2" sx={{
-                                            fontFamily: FONT_FAMILY.primary,
-                                            color: '#546E7A', lineHeight: 1.7
-                                        }}>
-                                            {program.description}
-                                        </Typography>
-                                    </Box>
-
-                                    <Box sx={{ p: 4 }}>
-                                        <Box sx={{ mb: 4 }}>
-                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1.5 }}>
-                                                <Typography variant="body2" sx={{
-                                                    fontFamily: FONT_FAMILY.primary,
-                                                    fontWeight: 600, color: '#1A237E'
-                                                }}>
-                                                    Progress to Goal
-                                                </Typography>
-                                                <Typography variant="body2" sx={{
-                                                    fontFamily: FONT_FAMILY.primary,
-                                                    fontWeight: 700, color: program.color
-                                                }}>
-                                                    {program.progress}%
-                                                </Typography>
-                                            </Box>
-                                            <Box sx={{ position: 'relative', height: 8, bgcolor: '#F5F5F5', borderRadius: 4, overflow: 'hidden' }}>
-                                                <Box sx={{
-                                                    position: 'absolute',
-                                                    left: 0,
-                                                    top: 0,
-                                                    height: '100%',
-                                                    width: `${program.progress}%`,
-                                                    background: `linear-gradient(90deg, ${program.color} 0%, ${program.color}AA 100%)`,
-                                                    transition: 'width 1s ease-in-out'
-                                                }} />
-                                            </Box>
-                                        </Box>
-
-                                        <Grid container spacing={2}>
-                                            {program.metrics.map((metric, idx) => (
-                                                <Grid size={{ xs: 12 }} key={idx}>
-                                                    <Box sx={{
-                                                        display: 'flex',
-                                                        justifyContent: 'space-between',
-                                                        p: 2,
-                                                        bgcolor: '#FAFAFA',
-                                                        borderRadius: 2,
-                                                        border: '1px solid #EEEEEE'
-                                                    }}>
-                                                        <Typography variant="body2" sx={{
-                                                            fontFamily: FONT_FAMILY.primary,
-                                                            color: '#546E7A', fontWeight: 500
-                                                        }}>
-                                                            {metric.label}
-                                                        </Typography>
-                                                        <Typography variant="body2" sx={{
-                                                            fontFamily: FONT_FAMILY.primary,
-                                                            fontWeight: 700, color: program.color
-                                                        }}>
-                                                            {metric.value}
-                                                        </Typography>
-                                                    </Box>
-                                                </Grid>
-                                            ))}
-                                        </Grid>
-                                    </Box>
-                                </Card>
-                            </Grid>
+                                            Donate Now
+                                            <ArrowRight24Regular style={{ fontSize: '16px' }} />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         ))}
-                    </Grid>
+                    </div>
                 </Box>
-
-                <Box data-aos="fade-left">
-                    <StorySlider />
-                </Box>
-{/* 
-                <Box data-aos="fade-right" sx={{ mb: 12 }}>
+                
+                <Box sx={{ mb: 12 }}>
                     <Typography variant="h4" sx={{ fontFamily: FONT_FAMILY.primary, fontWeight: 700, textAlign: 'center', mb: 6, color: '#1A237E' }}>
                         Gallery
                     </Typography>
@@ -466,7 +338,7 @@ const ImpactPage = () => {
                             )}
                         </Box>
                     </Modal>
-                </Box> */}
+                </Box>
                 <DonateSection />
             </Container>
         </Box>

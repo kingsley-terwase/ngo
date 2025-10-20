@@ -123,7 +123,7 @@ const Header = () => {
                                     zIndex: theme.zIndex.appBar + 1,
                                 }}
                             >
-                                EGIHOF
+                                EGIHEF
                             </Typography>
                         </LogoContainer>
 

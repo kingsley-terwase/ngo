@@ -35,6 +35,7 @@ import { FONT_FAMILY } from '../../../Config/font';
 import { COLORS } from '../../../Config/color';
 import { PeopleRegular } from '@fluentui/react-icons';
 import { useNavigate } from 'react-router-dom';
+import SecAboutUs from '../../../Components/SecAboutUs';
 
 export function AboutUsPage() {
     const navigate = useNavigate();
@@ -115,7 +116,6 @@ export function AboutUsPage() {
                 </Box>
             </Box>
 
-
             <Container maxWidth="lg" sx={{ mt: -6, mb: 12, position: 'relative', zIndex: 2 }}>
                 <Grid container spacing={4}>
                     <Grid size={{ xs: 12, md: 6 }}>
@@ -192,7 +192,8 @@ export function AboutUsPage() {
                     </Grid>
                 </Grid>
             </Container>
-
+            
+            <SecAboutUs />    
             <Box data-aos='fade-right' sx={{ background: '#f8fafb', py: 10 }}>
                 <Container maxWidth="lg">
                     <Box sx={{ textAlign: 'center', mb: 8 }}>
@@ -295,15 +296,16 @@ export function AboutUsPage() {
                 <Grid container spacing={2}>
                     {[
                         { name: 'Ann Judith Chinonso-Ajah', role: 'Director', image: '/Images/ngo_6.png' },
-                        { name: 'Benedict Chinonso-Ajah', role: 'Administrative Manager', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop' },
-                        { name: 'Chizoma Izama', role: 'Project Manager', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop' },
-                        { name: 'Patience Samuel Adamu', role: 'Admin Assistant', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop', },
-                        { name: 'Augusta Humphrey Oboh', role: 'Accounts Officer', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop' },
-                        { name: 'Peace Onwuka Kalu', role: 'Accounts Assistant', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop' },
-                        { name: 'Mary Awoniyi', role: 'Project Coordinator(Health)', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop' },
-                        { name: 'Irene Isioma Okafor', role: 'Project Coordinator(Education)', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop' },
-                        { name: 'Rose Samuel', role: 'Project Coordinator(Livelihood)', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop' },
-                        { name: 'Chinenye Okafor', role: 'Project Coordinator(Training)', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop' }
+                        { name: 'Benedict John Chinonso', role: 'Administrative Manager', image: '/Illus/admin_1.png' },
+                        { name: 'Chizoma Izama', role: 'Project Manager', image: '/Illus/admin_2.png' },
+                        { name: 'Arinze Okenwa John', role: 'Information Officer ICT', image: '/Illus/admin_3.png', },
+                        { name: 'Dike Theresa Onyemaechi', role: 'Project Coordinator Health Assistant', image: '/Illus/admin_4.png', },
+                        { name: 'Augusta Humphrey Oboh', role: 'Accounts Officer', image: '/Illus/admin_5.png' },
+                        { name: 'Felicia Livinus', role: 'Project Coordinator(Livelihood)', image: '/Illus/admin_6.png' },
+                        { name: 'Mary Awoniyi', role: 'Project Coordinator(Health)', image: '/Illus/admin_7.png' },
+                        { name: 'Patience Samuel', role: 'Admin Assistant', image: '/Illus/admin_08.png' },
+                        { name: 'Chinenye Okafor', role: 'Project Coordinator(Training)', image: '/Images/ngo_13.png' },
+                        { name: 'Irene Isioma Okafor', role: 'Project Coordinator(Education)', image: '/Images/ngo_14.png' },
                     ].map((member, index) => (
                         <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
                             <Card
@@ -361,7 +363,7 @@ export function AboutUsPage() {
                 </Grid>
             </Container>
 
-            <Box data-aos='fade-down' sx={{ background: COLORS.primary, py: 8 }}>
+            {/* <Box data-aos='fade-down' sx={{ background: COLORS.primary, py: 8 }}>
                 <Container maxWidth="lg">
                     <Box sx={{ textAlign: 'center', mb: 6 }}>
                         <Typography variant="h4" sx={{ fontFamily: FONT_FAMILY.primary, color: 'white', fontWeight: 700, mb: 1 }}>
@@ -399,7 +401,7 @@ export function AboutUsPage() {
                         ))}
                     </Grid>
                 </Container>
-            </Box>
+            </Box> */}
 
             <Container maxWidth="lg" sx={{ py: 10 }}>
                 <Paper

@@ -1,3 +1,15 @@
+import {
+    BookOpen24Regular,
+    Food24Regular,
+    Heart24Regular,
+    Home24Regular,
+    Sport24Regular,
+    PersonRegular,
+    ArrowRight24Regular,
+    Target24Regular,
+    CheckmarkCircle24Regular
+} from '@fluentui/react-icons';
+
 export const stories = [
   {
     name: "Sarah Johnson",
@@ -45,14 +57,13 @@ export const stories = [
     image: "PP"
   }
 ];
-
-
+15
 export const galleryImages = [
-  { url: '/Images/ngo.png', caption: 'Community outreach program' },
-  { url: '/Images/ngo_1.png', caption: 'Vocational training session' },
-  { url: '/Images/ngo_2.png', caption: 'Education sponsorship event' },
-  { url: '/Images/ngo_3.png', caption: 'Health and nutrition outreach' },
-  { url: '/Images/ngo_4.png', caption: 'Skills acquisition training' },
+  { url: '/Images/ngo.png', caption: '' },
+  { url: '/Images/ngo_1.png', caption: '' },
+  { url: '/Images/ngo_2.png', caption: '' },
+  { url: '/Images/ngo_3.png', caption: '' },
+  { url: '/Images/ngo_4.png', caption: '' },
   { url: '/Images/ngo_5.png', caption: '' },
   { url: '/Images/ngo_6.png', caption: '' },
   { url: '/Images/ngo_7.png', caption: '' },
@@ -61,4 +72,40 @@ export const galleryImages = [
   { url: '/Images/ngo_10.png', caption: '' },
   { url: '/Images/ngo_11.png', caption: '' },
   { url: '/Images/ngo_12.png', caption: '' },
+];
+
+
+
+export const programs = [
+    {
+        title: 'Rural women trained and empwered in detergent/ disinfectant production during 2023 Women summit in Kuje Area Council, FCT',
+        icon: <BookOpen24Regular />,
+        color: '#667eea',
+        image: '/Images/ngo_15.png'
+    },
+    {
+        title: 'Press interview with Hajiyah Salamatu Sabo the wife of the kuje Area Council Chairman ',
+        color: '#f093fb',
+        image: '/Images/ngo_7.png'
+    },
+    {
+        title: 'Mr Bulus Danladi Deputy Director, Fct UBEB and one time Education secretary Kuje Area Council.',
+        color: '#4facfe',
+        image: '/Images/ngo_15.png'
+    },
+    {
+        title: 'Rural Women trained and empowered in catering services during 2023 Women summit in Kuje Area Council, FCT',
+        color: '#fa709a',
+        image: '/Images/ngo_1.png'
+    },
+    {
+        title: 'Rural Women trained and empowered in detergent/ disinfectant production during 2023 Women summit in Kuje Area Council, FCT',
+        color: '#764ba2',
+        image: '/Images/ngo.png'
+    },
+    {
+        title: 'The Nigerian Export Promotion Council (NEPC) Where represented',  
+        color: '#30cfd0',
+        image: '/Images/ngo_16.png'
+    }
 ];

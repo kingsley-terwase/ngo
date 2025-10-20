@@ -54,7 +54,7 @@ const gradientShift = keyframes`
 `;
 
 const AnimatedBackground = styled(Box)(() => ({
-  backgroundImage: "url('/Images/est_3.png')", 
+  backgroundImage: "url('/Images/est_3.png')",
   backgroundSize: "cover",
   backgroundPosition: "center",
   animation: `${gradientShift} 10s ease infinite`,
@@ -66,8 +66,8 @@ const AnimatedBackground = styled(Box)(() => ({
     left: 0,
     right: 0,
     bottom: 0,
-    background: "rgba(0, 0, 0, 0.8)", 
-    backdropFilter: "blur(6px)", 
+    background: "rgba(0, 0, 0, 0.8)",
+    backdropFilter: "blur(6px)",
   },
 }));
 
@@ -509,7 +509,7 @@ export default function AuthPages() {
                 onChange={(e) => handleInputChange("agreeToTerms", e.target.checked)}
                 sx={{ p: 0.5 }}
               />
-              <Typography variant="body1" sx={{fontFamily:FONT_FAMILY.primary, pt:1}} color="text.secondary" >
+              <Typography variant="body1" sx={{ fontFamily: FONT_FAMILY.primary, pt: 1 }} color="text.secondary" >
                 I agree to the{" "}
                 <Link href="#" color="primary" fontWeight="600">
                   Terms of Service
@@ -538,7 +538,7 @@ export default function AuthPages() {
           </PrimaryButton>
 
           <Box textAlign="center" pt={2}>
-            <Typography variant="body1" sx={{fontFamily: FONT_FAMILY.primary}} color="text.secondary">
+            <Typography variant="body1" sx={{ fontFamily: FONT_FAMILY.primary }} color="text.secondary">
               Already have an account?{" "}
               <Link
                 component="button"
@@ -652,7 +652,7 @@ export default function AuthPages() {
 
           <Grid size={{ xs: 12, md: 6 }}>
             <Fade in timeout={1000} style={{ transitionDelay: '200ms' }}>
-              <Box display="flex" justifyContent="center" sx={{py:3}}>
+              <Box display="flex" justifyContent="center" sx={{ py: 3 }}>
                 <GlassCard sx={{ width: '100%', maxWidth: 500 }}>
                   <CardContent sx={{ p: 4 }}>
                     {currentPage === "login" ? <LoginPage /> : <RegisterPage />}

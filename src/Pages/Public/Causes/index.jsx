@@ -79,12 +79,6 @@ const CausesPage = () => {
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px', textAlign: 'center' }}>
                         <div>
                             <div style={{ fontSize: '3rem', fontWeight: '700', color: COLORS.primary, marginBottom: '8px' }}>
-                                $223K
-                            </div>
-                            <div style={{ color: '#5a6c7d', fontSize: '1.1rem', fontWeight: '500' }}>Total Raised</div>
-                        </div>
-                        <div>
-                            <div style={{ fontSize: '3rem', fontWeight: '700', color: COLORS.primary, marginBottom: '8px' }}>
                                 1,773
                             </div>
                             <div style={{ color: '#5a6c7d', fontSize: '1.1rem', fontWeight: '500' }}>Total Supporters</div>
@@ -111,7 +105,7 @@ const CausesPage = () => {
                         Support Our Initiatives
                     </h2>
                     <p style={{ fontSize: '1.1rem', color: '#5a6c7d', maxWidth: '700px', margin: '0 auto' }}>
-                        Choose a cause that resonates with you and make a meaningful difference in children's lives
+                        Choose a cause that resonates with you and make a meaningful difference in the lives of people.
                     </p>
                 </div>
 
@@ -135,28 +129,7 @@ const CausesPage = () => {
                                 cursor: 'pointer'
                             }}
                         >
-                            <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
-
-                               <Box component='img' src={cause.image} sx={{width: '100%',}}/>
-                                <div style={{
-                                    position: 'absolute',
-                                    top: '20px',
-                                    right: '20px',
-                                    width: '56px',
-                                    height: '56px',
-                                    background: 'white',
-                                    borderRadius: '50%',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    color: cause.color,
-                                    fontSize: '24px',
-                                    boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
-                                    zIndex: 2
-                                }}>
-                                    {cause.icon}
-                                </div>
-                            </div>
+                           
 
                             <div style={{ padding: '28px' }}>
                                 <h3 style={{ fontSize: '1.5rem', fontWeight: '600', color: '#2c3e50', marginBottom: '12px' }}>
@@ -165,40 +138,6 @@ const CausesPage = () => {
                                 <p style={{ color: '#5a6c7d', lineHeight: '1.6', marginBottom: '24px', fontSize: '0.95rem' }}>
                                     {cause.description}
                                 </p>
-
-                                <div style={{ marginBottom: '16px' }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                                        <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#2c3e50' }}>
-                                            ${cause.raised.toLocaleString()} raised
-                                        </span>
-                                        <span style={{ fontSize: '0.9rem', color: '#5a6c7d' }}>
-                                            Goal: ${cause.goal.toLocaleString()}
-                                        </span>
-                                    </div>
-                                    <div style={{
-                                        width: '100%',
-                                        height: '8px',
-                                        background: '#e8ecf1',
-                                        borderRadius: '10px',
-                                        overflow: 'hidden'
-                                    }}>
-                                        <div style={{
-                                            width: `${getProgress(cause.raised, cause.goal)}%`,
-                                            height: '100%',
-                                            background: `linear-gradient(90deg, ${cause.color}, ${cause.color}dd)`,
-                                            borderRadius: '10px',
-                                            transition: 'width 0.6s ease'
-                                        }} />
-                                    </div>
-                                    <div style={{
-                                        marginTop: '8px',
-                                        fontSize: '0.85rem',
-                                        color: cause.color,
-                                        fontWeight: '600'
-                                    }}>
-                                        {Math.round(getProgress(cause.raised, cause.goal))}% Complete
-                                    </div>
-                                </div>
 
                                 <div style={{
                                     display: 'flex',

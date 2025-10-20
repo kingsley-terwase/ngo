@@ -44,7 +44,7 @@ const VolunteerPage = () => {
             color: '#764ba2'
         },
         {
-            title: 'Creative Arts Teacher',
+            title: 'Teacher',
             description: 'Teach painting, music, dance, or crafts to inspire creativity',
             commitment: '3 hours/week',
             volunteers: 12,
